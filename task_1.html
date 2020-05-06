@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript: Course for DXStudents</title>
+</head>
+
+<body>
+  <h2>Change element background</h2>
+  <p>
+    <b><span style="font-size: 20px;">Task: &ThinSpace;</span></b> 
+    <i>Place a button and a DIV element with a green background. When the button is clicked, change the DIV background color to red. Everything should be done using pure JavaScript. </i>
+  </p>
+  <br>
+  <div id="mcxDiv" style="background-color: green; height: 300px;width: 300px;"></div>
+  <br>
+  <button id="mcxBtn" style="width: 100px; height: 30px;">Click</button>
+  <script>
+    const mcxDiv = document.getElementById('mcxDiv');
+    const button = document.getElementById('mcxBtn');
+
+    button.onclick = function()
+    {
+        ///mcxDiv.style="background-color: green; height: 500px;width: 500px;";
+        mcxDiv.style.height="500px";
+        mcxDiv.style.width="500px";
+    };
+  </script>
+
+</body>
+</html>
