@@ -7,7 +7,7 @@
 <body>
   <h2>Create element at runtime</h2>
   <p>
-    <b><span style="font-size: 20px;">Task: &ThinSpace;</span></b> 
+    <b><span style="font-size: 20px;">Task: </span></b> 
     <i>Declare the “MyClass” class with the “counter” variable in its scope. The variable should not be accessible directly. Set the default counter value to 0. 
       <br>Provide the capability to increment the “counter” variable outside of the “MyClass” scope. In addition, add API to get the current “counter” value.
       <ul style="list-style-type: lower-latin;">
@@ -42,32 +42,30 @@
       }   
     }
 
-    let MyClassFunc = (function() {
-      let counter = 0;
-      return {
-        increment: function (inc) {
-          counter += inc;
-        },
-        getValue: function() {
-          return counter;
-        }
+    function MyFunc(param) {
+      let counter = param;
+      this.getCounter = function() {
+        return counter;
+      }
+      this.increment = function() {
+        counter += 1;  
       };
-    }() );
-    
-    const resultClass = document.getElementById('mcxResultClass');
-    const resultFunc = document.getElementById('mcxResultFunc');  
+    }
+
+    const resultClass = document.getElementById("mcxResultClass");
+    const resultFunc = document.getElementById("mcxResultFunc"); 
+    const button = document.getElementById("mcxBtn");
 
     const myObject = new MyClass();
-    const button = document.getElementById("mcxBtn");
-    button.onclick = function()
-    { 
+    const myFuncObject = new MyFunc(0);
+
+    button.onclick = function() { 
       myObject.increment();
       resultClass.innerHTML = myObject.counter;
 
-      MyClassFunc.increment(1);
-      resultFunc.innerHTML = MyClassFunc.getValue();
+      myFuncObject.increment();
+      resultFunc.innerHTML = myFuncObject.getCounter();  
     };
-
 
   </script>
 </body>
