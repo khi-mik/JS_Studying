@@ -7,43 +7,66 @@
 <body>
   <h2>Create element at runtime</h2>
   <p>
-    <b><span style="font-size: 20px;">Task: &ThinSpace;</span></b> 
-    <i>Place a button on a page. When it is clicked for the first time, create a DIV element with a text input inside the div. Then, when the button is clicked for the second time
+    <b><span style="font-size: 20px;">Task: </span></b> 
+    <i>Declare the “MyClass” class with the “counter” variable in its scope. The variable should not be accessible directly. Set the default counter value to 0. 
+      <br>Provide the capability to increment the “counter” variable outside of the “MyClass” scope. In addition, add API to get the current “counter” value.
       <ul style="list-style-type: lower-latin;">
-        <li>Change the DIV size.</li> 
-        <li>Change the background color.</li> 
-    </ul>  
+        <li>using a function</li> 
+        <li>using a class</li> 
+      </ul>  
     </i>
   </p>
   <br>
-  <button id="mcxBtn" style="width: 100px; height: 30px; vertical-align: center;">Click</button>
+
+  <button id="mcxBtn" style="width: 100px; height: 30px; vertical-align: center;">Inc value</button>
+  <br>
+  <br>
+  <span> - using class - </span>
+  <br>
+  <span id="mcxResultClass">0</span>
+  <br>
+  <br>
+  <span> - using function - </span>
+  <br>
+  <span id="mcxResultFunc">0</span>
 
   <script>
-    const button = document.getElementById("mcxBtn");
-    let div;
-    button.onclick = function()
-    {      
-      if (!div) {
-        div = document.createElement("div");
-        div.style.backgroundColor = "green";
-        div.style.width = "300px";
-        div.style.height = "50px";
-        div.style.padding = "10px";
+    class MyClass {
+      #counter = 0;
+      get counter() { 
+        return this.#counter;
+      }  
+    
+      increment() {
+        this.#counter++;
+      }   
+    }
 
-        const input = document.createElement("input");
-        input.type = "Text";   
-        input.style.width = "100%";
-        input.style.height = "100%";
-        input.minLength = 4;
-        input.maxLength = 8;  
-        div.appendChild(input);
-        document.body.appendChild(div);      
-      } 
-        else {
-          div.style.backgroundColor = "red";
-          div.style.width = "600px";
-        }
+    function MyFunc(param) {
+      let counter = param;
+      this.getCounter = function() {
+        return counter;
+      }
+      this.increment = function() {
+        counter += 1;  
+      };
+    }
+
+    const resultClass = document.getElementById("mcxResultClass");
+    const resultFunc = document.getElementById("mcxResultFunc"); 
+    const button = document.getElementById("mcxBtn");
+
+    const myObject = new MyClass();
+    const myFuncObject = new MyFunc(0);
+
+    button.onclick = function() { 
+      myObject.increment();
+      resultClass.innerHTML = myObject.counter;
+
+      myFuncObject.increment();
+      resultFunc.innerHTML = myFuncObject.getCounter();  
     };
+
   </script>
 </body>
 </html>
