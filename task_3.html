@@ -42,8 +42,8 @@
       }   
     }
 
-    function MyFunc(param) {
-      let counter = param;
+    function MyFunc() {
+      let counter = 0;
       this.getCounter = function() {
         return counter;
       }
@@ -57,7 +57,7 @@
     const button = document.getElementById("mcxBtn");
 
     const myObject = new MyClass();
-    const myFuncObject = new MyFunc(0);
+    const myFuncObject = new MyFunc();
 
     button.onclick = function() { 
       myObject.increment();
