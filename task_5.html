@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript: Course for DXStudents</title>
+</head>
+
+<body>
+  <h2>Create element at runtime</h2>
+  <p>
+    <b><span style="font-size: 20px;">Task: </span></b> 
+    <i>Declare the “MyClass” class with the “counter” variable in its context. “counter” should be declared as a “property” of “MyClass” as shown below:
+      <br><p>
+        <code>
+          function MyClass() {<br>
+            this.counter = 0;<br>
+          }<br>
+        </code></p>      
+      Declare the “AddCounter” function outside of “MyClass” as shown below:
+      <br><p>
+        <code>
+          function AddCounter() {<br>
+            this.counter++;<br>
+          }<br>
+        </code></p>      
+    </i>  
+    <b>How to call AddCounter to increment the "MyClass.counter" option?</b>
+  </p>
+  <br>
+
+  <button id="mcxBtn" style="width: 100px; height: 30px; vertical-align: center;">Click</button>
+  <br>
+  <script>
+    function MyClass() {
+      this.counter = 0;
+    }
+    
+    function AddCounter() {
+      this.counter++;
+    }
+
+
+    const button = document.getElementById("mcxBtn");
+    button.onclick = function() { 
+
+    };
+
+  </script>
+</body>
+</html>
