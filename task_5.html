@@ -29,19 +29,26 @@
 
   <button id="mcxBtn" style="width: 100px; height: 30px; vertical-align: center;">Click</button>
   <br>
+  <span id="mcxResult">0</span>
+  <br>
   <script>
+
     function MyClass() {
       this.counter = 0;
     }
     
     function AddCounter() {
       this.counter++;
-    }
+    }  
 
+    const myObject = new MyClass();
 
     const button = document.getElementById("mcxBtn");
-    button.onclick = function() { 
+    const result = document.getElementById("mcxResult");
 
+    button.onclick = function() { 
+      AddCounter.call(myObject)
+      result.innerHTML = myObject.counter;
     };
 
   </script>
