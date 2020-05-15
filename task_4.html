@@ -27,32 +27,21 @@
 
   <script>
     function MyFunc(){
-      const self = this;
-      
+    
       function A() {
         console.log("A_A");
       }
+      this.runA = A;  
+    }  
 
-      this.runA = function () {
-        return A();
-      };
-
-      function B() {
-        console.log("B_B");
-      }
-
-      this.runB = function () {
-        return B.call();
-      };      
-    }
-    
+      
+  
     const myFuncObject = new MyFunc();
     const button = document.getElementById("mcxBtn");
 
     button.onclick = function()
     { 
       myFuncObject.runA();
-      myFuncObject.runB(); 
     };
 
 
