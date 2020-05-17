@@ -5,7 +5,7 @@
 </head>
 
 <body>
-  <h2>Create element at runtime</h2>
+  <h2>Access private object options</h2>
   <p>
     <b><span style="font-size: 20px;">Task: &ThinSpace;</span></b> 
     <i>Declare the “MyFunc” class with the “funcA” function in the “MyFunc” scope. “functA” should not be accessible directly from “MyFunc”. 
@@ -27,32 +27,21 @@
 
   <script>
     function MyFunc(){
-      const self = this;
-      
+    
       function A() {
         console.log("A_A");
       }
+      this.runA = A;  
+    }  
 
-      this.runA = function () {
-        return A();
-      };
-
-      function B() {
-        console.log("B_B");
-      }
-
-      this.runB = function () {
-        return B.call();
-      };      
-    }
-    
+      
+  
     const myFuncObject = new MyFunc();
     const button = document.getElementById("mcxBtn");
 
     button.onclick = function()
     { 
       myFuncObject.runA();
-      myFuncObject.runB(); 
     };
 
 
