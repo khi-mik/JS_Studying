@@ -21,11 +21,7 @@
   <br>
 
   <button id="mcxBtn" style="width: 100px; height: 30px; vertical-align: center;">Click</button>
-  <br>
-
-
-<span id="mcxResult">0</span>
-<br>
+  
 
   <script>
     function A() {
@@ -50,11 +46,8 @@
     const objA1 = new A1();
     const objB1 = new B1();
     objB1.value++;
-
-
     const button = document.getElementById("mcxBtn");
-    const result = document.getElementById("mcxResult");
-
+  
     button.onclick = function() {
       console.log("A.value = " + objA.value + "   B.value = " + objB.value);
       
