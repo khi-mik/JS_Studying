@@ -21,14 +21,12 @@
     class A {
     }
 
-    A.prototype = {
-      values: []
-    }  
+    A.prototype.values = [];
 
     const myObj1 = new A();
     const myObj2 = new A();
 
-    myObj2.values = ["AAA"];
+    myObj2.values.push("AAA");
 
     const button = document.getElementById("mcxBtn");
   
