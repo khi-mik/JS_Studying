@@ -23,15 +23,21 @@
   <button id="mcxBtn" style="width: 100px; height: 30px; vertical-align: center;">Click</button>
 
   <script>
-    let A = {
-      value: 1      
-    };
 
-    let B = {
-      __proto__: A 
-    };
+    function A() {
+      this.value = 1;
+    }
+    
+    function B() {
+      A.call(this); 
+    }
 
-    B.value++;
+    const objA = new A();
+    const objB = new B();  
+
+    objB.value++;
+
+    // =================================  
 
     class A1 {
       value = 1;
@@ -44,9 +50,10 @@
     const button = document.getElementById("mcxBtn");
   
     button.onclick = function() {
-      console.log("A.value = " + A.value + "   B.value = " + B.value);
+      console.log("A.value = " + objA.value + "   B.value = " + objB.value);
       
       console.log("A.value = " + objA1.value + "   B.value = " + objB1.value);
+      
     };
   </script>
 </body>
