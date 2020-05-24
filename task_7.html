@@ -16,17 +16,24 @@
 
   <button id="mcxBtn" style="width: 100px; height: 30px; vertical-align: center;">Click</button>
   <br>
-
+  
   <script>
+    class A {
+    }
+
+    A.prototype = {
+      values: []
+    }  
+
+    const myObj1 = new A();
+    const myObj2 = new A();
+
+    myObj2.values = ["AAA"];
 
     const button = document.getElementById("mcxBtn");
-
+  
     button.onclick = function() {
-  //    console.log("test");
-      
-
-
-
+      console.log(myObj1.values + "  " + myObj2.values);
     };
 
   </script>
