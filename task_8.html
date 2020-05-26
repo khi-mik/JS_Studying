@@ -31,14 +31,14 @@
       <br>
       3.Take a look at the following code:<br>
       <code>
-        var arr1 = [10, 20, 30];<br>
+        var arr11 = [10, 20, 30];<br>
         function myFunc(a, b) {<br>
           console.log(a + b);<br>
         }
       </code>
       <br>
+      How to pass the first and the second element of the <b>arr11</b>> array to the <b>myFunc</b> function?<br>
       <br>
-      How to pass the first and the second element of the <b>arr1</b>> array to the <b>myFunc</b> function?<br>
     </i>
   </p>
   <br>
@@ -58,21 +58,29 @@
       e: "val2"
     };
 
+    const resObj = Object.assign(obj1, obj2);  
+
     const arr1 = [1, 2, 3];
     const arr2 = [4, 5];
 
-    const arr1 = [10, 20, 30];
-    function myFunc(a, b) {
-      console.log(a + b);
-    }
+    const resArr = [...arr1, ...arr2];
+
+
+     const arr11 = [10, 20, 30];
+     function myFunc(a, b) {
+       console.log(a + b);
+     }
 
 
     const button = document.getElementById("mcxBtn");
 
     button.onclick = function() {
-  //    console.log("test");
-   
+      console.log(resObj.a + " " + resObj.b + " " + resObj.c + " " + resObj.d + " " + resObj.e);
+      console.log(resArr);
 
+
+      myFunc(...arr11);
+      myFunc(arr11[0], arr11[1] );
     };
 
   </script>
