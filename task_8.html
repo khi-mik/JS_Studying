@@ -57,9 +57,12 @@
       d: "val1",
       e: "val2"
     };
-
-    const resObj = Object.assign(obj1, obj2);  
-
+    
+//1-1
+    const resObj = Object.assign({}, obj1, obj2); 
+//1-2
+    const resObj2 = {...obj1, ...obj2}
+    
     const arr1 = [1, 2, 3];
     const arr2 = [4, 5];
 
@@ -75,7 +78,8 @@
     const button = document.getElementById("mcxBtn");
 
     button.onclick = function() {
-      console.log(resObj.a + " " + resObj.b + " " + resObj.c + " " + resObj.d + " " + resObj.e);
+      console.log(resObj);
+      console.log(resObj2);
       console.log(resArr);
 
 
