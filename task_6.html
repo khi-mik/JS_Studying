@@ -32,6 +32,8 @@
       A.call(this); 
     }
 
+    B.prototype = Object.create(A.prototype, { constructor: B });
+
     const objA = new A();
     const objB = new B();  
 
