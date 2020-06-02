@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript: Course for DXStudents</title>
+</head>
+
+<body>
+  <h2>Merge objects</h2>
+  <p>
+    <b><span style="font-size: 20px;">Task: </span></b><br> 
+    <i>1. There is a function that returns the Promise object.<br>
+      <code>
+        function func1(p) {<br>
+          return new Promise(function(resolve, reject) {<br>
+                setTimeout(function() {<br>
+                    if (p === 10) {<br>
+                        resolve(10);<br>
+                    }<br>
+                    else {<br>
+                        reject("Invalid value");<br>
+                    }<br>                 
+                }, 500);<br>
+            });<br>
+        }<br>
+      </code>
+      <br>
+      Call the function twice with two parameters: 10 and 15. Then, display the value with which the Promise object is fulfilled/rejected in the browser console. Process the function result using:
+      <ul style="list-style-type: lower-latin;">
+        <li>Promise API</li> 
+        <li>async function</li> 
+      </ul>        
+      <br>
+      <br>
+      2. There are following functions<br>
+      <code>
+        function func1() {<br>
+          return new Promise(function(resolve) {<br>
+            setTimeout(function() {<br>      
+              resolve("result1"); <br>       
+            }, 1000);<br>
+          });<br>
+        }<br>
+        <br>
+        function func2() {<br>
+          return new Promise(function(resolve) {<br>
+            setTimeout(function() {<br>
+              resolve("result2");<br>
+            }, 500);<br>
+          });<br>
+        }<br>
+      </code>
+      <br>
+      <ul style="list-style-type: lower-latin;">
+        <li>Display values with which all Promise objects are fulfilled in the browser console</li> 
+        <li>Display a value of the Promise object that is fulfilled first in the browser console.</li> 
+      </ul>
+      <br>
+    </i>
+  </p>
+  <br>
+
+  <button id="mcxBtn" style="width: 100px; height: 30px; vertical-align: center;">Click</button>
+  <br>
+
+  <script>
+
+
+
+    const button = document.getElementById("mcxBtn");
+
+    button.onclick = function() {
+      console.log("");
+    };
+
+  </script>
+</body>
+</html>
