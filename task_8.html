@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript: Course for DXStudents</title>
+</head>
+
+<body>
+  <h2>Merge objects</h2>
+  <p>
+    <b><span style="font-size: 20px;">Task: </span></b><br> 
+    <i>1. Create an object that contains options of both objects that are declared below:<br>
+      <code>
+        var obj1 = {<br>
+          a: 1,<br>
+          b: 2,<br> 
+          c: 3<br>
+      };<br>
+      var obj2 = {<br>
+        d: "val1",<br>
+        e: "val2"<br>
+      };<br>
+      </code>
+      <br>
+      <br>
+      2.Create an array that contains all items from arrays that are declared below:<br>
+      <code>
+        var arr1 = [1, 2, 3];<br>
+        var arr2 = [4, 5];<br>
+      </code>
+      <br>
+      <br>
+      3.Take a look at the following code:<br>
+      <code>
+        var arr11 = [10, 20, 30];<br>
+        function myFunc(a, b) {<br>
+          console.log(a + b);<br>
+        }
+      </code>
+      <br>
+      How to pass the first and the second element of the <b>arr11</b>> array to the <b>myFunc</b> function?<br>
+      <br>
+    </i>
+  </p>
+  <br>
+
+  <button id="mcxBtn" style="width: 100px; height: 30px; vertical-align: center;">Click</button>
+  <br>
+
+  <script>
+    const obj1 = {
+      a: 1,
+      b: 2,
+      c: 3
+    };
+
+    const obj2 = {
+      d: "val1",
+      e: "val2"
+    };
+    
+//1-1
+    const resObj = Object.assign({}, obj1, obj2); 
+//1-2
+    const resObj2 = {...obj1, ...obj2}
+    
+    const arr1 = [1, 2, 3];
+    const arr2 = [4, 5];
+
+    const resArr = [...arr1, ...arr2];
+
+
+     const arr11 = [10, 20, 30];
+     function myFunc(a, b) {
+       console.log(a + b);
+     }
+
+
+    const button = document.getElementById("mcxBtn");
+
+    button.onclick = function() {
+      console.log(resObj);
+      console.log(resObj2);
+      console.log(resArr);
+
+
+      myFunc(...arr11);
+      myFunc(arr11[0], arr11[1] );
+    };
+
+  </script>
+</body>
+</html>
