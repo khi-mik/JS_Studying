@@ -76,22 +76,8 @@
             }, 500);
         });
     }
-
-    //1-b
-    async function asyncCall(x) {
-      let a;
-      try {
-        a = await func1(x); 
-      } 
-      catch(e) {
-        a = e;
-      }
-      return a;
-    } 
-    
+   
     //2  
-    // Display values with which all Promise objects are fulfilled in the browser console
-    // Display a value of the Promise object that is fulfilled first in the browser console
     function func11() {
       return new Promise(function(resolve) {
         setTimeout(function() {     
@@ -108,13 +94,9 @@
       });
     }
 
-    const pr3 = new func11;
-    const pr4 = new func22;
-
-
     const button = document.getElementById("mcxBtn");
 
-    button.onclick = function() {
+    button.onclick = async function() {
     // 1-a  
       const pr = new func1(10);
       pr.then(
@@ -135,21 +117,25 @@
         }
       )
     // 1-b  
-      asyncCall(10).then(v => {
-        console.log(v);  
-      });  
-      asyncCall(15).then(v => {
-        console.log(v);  
-      });        
+      try {
+        const res = await func1(10);
+        console.log(res);
+      } 
+      catch (err) {
+        console.log(err);  
+      }
       
     // 2
-       Promise.all([pr3, pr4]).then((values) => {
-         console.log(values);
-       });
+      const pr3 = new func11();
+      const pr4 = new func22();
+
+      Promise.all([pr3, pr4]).then((values) => {
+        console.log(values);
+      });
       
-       Promise.race([pr3, pr4]).then((values) => {
-         console.log(values);
-       });
+      Promise.race([pr3, pr4]).then((value) => {
+        console.log(value);
+      });
 
     };
 
