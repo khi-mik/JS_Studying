@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript: Course for DXStudents</title>
+</head>
+
+<body>
+  <h2>Merge objects</h2>
+  <p>
+    <b><span style="font-size: 20px;">Task: </span></b><br> 
+    <i>1. There is a function that returns the Promise object.<br>
+      <code>
+        function func1(p) {<br>
+          return new Promise(function(resolve, reject) {<br>
+                setTimeout(function() {<br>
+                    if (p === 10) {<br>
+                        resolve(10);<br>
+                    }<br>
+                    else {<br>
+                        reject("Invalid value");<br>
+                    }<br>                 
+                }, 500);<br>
+            });<br>
+        }<br>
+      </code>
+      <br>
+      Call the function twice with two parameters: 10 and 15. Then, display the value with which the Promise object is fulfilled/rejected in the browser console. Process the function result using:
+      <ul style="list-style-type: lower-latin;">
+        <li>Promise API</li> 
+        <li>async function</li> 
+      </ul>        
+      <br>
+      <br>
+      2. There are following functions<br>
+      <code>
+        function func11() {<br>
+          return new Promise(function(resolve) {<br>
+            setTimeout(function() {<br>      
+              resolve("result1"); <br>       
+            }, 1000);<br>
+          });<br>
+        }<br>
+        <br>
+        function func22() {<br>
+          return new Promise(function(resolve) {<br>
+            setTimeout(function() {<br>
+              resolve("result2");<br>
+            }, 500);<br>
+          });<br>
+        }<br>
+      </code>
+      <br>
+      <ul style="list-style-type: lower-latin;">
+        <li>Display values with which all Promise objects are fulfilled in the browser console</li> 
+        <li>Display a value of the Promise object that is fulfilled first in the browser console.</li> 
+      </ul>
+      <br>
+    </i>
+  </p>
+  <br>
+
+  <button id="mcxBtn" style="width: 100px; height: 30px; vertical-align: center;">Click</button>
+  <br>
+
+  <script>
+  //1
+    function func1(p) {
+      return new Promise(function(resolve, reject) {
+            setTimeout(function() {
+                if (p === 10) {
+                    resolve(10);
+                }
+                else {
+                    reject("Invalid value");
+                }                 
+            }, 500);
+        });
+    }
+   
+    //2  
+    function func11() {
+      return new Promise(function(resolve) {
+        setTimeout(function() {     
+          resolve("result1");       
+        }, 1000);
+      });
+    }
+          
+    function func22() {
+      return new Promise(function(resolve) {
+        setTimeout(function() {
+          resolve("result2");
+        }, 500);
+      });
+    }
+
+    const button = document.getElementById("mcxBtn");
+
+    button.onclick = async function() {
+    // 1-a  
+      const pr = new func1(10);
+      pr.then(
+        function (resolved) {
+          console.log("1-a (10): " + resolved );
+        },
+        function (rejected) {
+          console.log("1-a (10): " + rejected );
+        }
+      )
+///      const pr2 = new func1(15);
+      func1(15).then(
+        function (resolved) {
+          console.log("1-a (15): " + resolved );
+        },
+        function (rejected) {
+          console.log("1-a (15): " + rejected );
+        }
+      )
+    // 1-b  
+      try {
+        const res = await func1(10);
+        console.log(res);
+      } 
+      catch (err) {
+        console.log(err);  
+      }
+      
+      try {
+        const res = await func1(15);
+        console.log(res);
+      } 
+      catch (err) {
+        console.log(err);  
+      }
+
+      
+    // 2
+      const pr3 = new func11();
+      const pr4 = new func22();
+
+      Promise.all([pr3, pr4]).then((values) => {
+        console.log(values);
+      });
+      
+      Promise.race([pr3, pr4]).then((value) => {
+        console.log(value);
+      });
+
+    };
+
+  </script>
+</body>
+</html>
