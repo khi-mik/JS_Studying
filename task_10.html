@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript: Course for DXStudents</title>
+</head>
+<style>
+  .button{
+    background-color: #4CAF50; /* Green */
+    border: none;
+    padding: 30px 30px;
+    font-size: 16px;
+    border-radius: 50%;
+    outline: none;
+}
+
+.buttonGray{
+    background-color: gray;
+  }
+  .buttonGreen{
+    background-color: green;
+  }
+  .buttonYellow{
+    background-color: yellow;
+  }
+  .buttonRed{
+    background-color: red;
+  }
+</style>
+
+<body>
+  <h2>JS Traffic Light</h2>
+  <p>
+    <b><span style="font-size: 20px;">Task: </span></b> 
+    <br>Create a simple traffic light component using pure JavaScript. The application should contain:
+    <ul style="list-style-type: decimal;">
+      <li>A simple traffic light with 3 circles.
+        <br>Circles and the traffic light container should be rendered in using JS <b>without</b> using <b>canvas</b> or <b>image</b>  
+        <br>Use CSS classes to customize traffic light appearance
+      </li>
+      <li>The traffic light should be two modes:
+        <br>Manual mode - lights can be switched on a button click  
+        <br>Automatic mode - lights can be switches automatically
+      </li>  
+      <li>The task should be implemented in two ways - using <a href="https://www.w3schools.com/js/js_object_constructors.asp">JavaScript functions</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">ES6 classes</a>. The resulting archive should contain both implementations.
+      </li>
+    </ul>  
+  </p>
+  <br>
+
+  <button id="mcxGreenBtn" class="button buttonGreen"></button><br>
+  <button id="mcxYellowBtn" class="button buttonGray"></button><br>
+  <button id="mcxRedBtn" class="button buttonGray"></button>
+
+  <script>
+    const buttonGreen = document.getElementById("mcxGreenBtn");
+    const buttonyellow = document.getElementById("mcxYellowBtn");
+    const buttonRed = document.getElementById("mcxRedBtn");
+
+    
+
+
+    buttonGreen.onclick = function() { 
+
+    };
+
+  </script>
+</body>
+</html>
