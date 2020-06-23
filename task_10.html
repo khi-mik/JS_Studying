@@ -4,27 +4,25 @@
   <title>JavaScript: Course for DXStudents</title>
 </head>
 <style>
-  .button{
-    background-color: #4CAF50; /* Green */
-    border: none;
-    padding: 30px 30px;
-    font-size: 16px;
-    border-radius: 50%;
-    outline: none;
-}
-
-.buttonGray{
-    background-color: gray;
+  .circle{
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+  }
+  .circleGray{
+    background: gray;
   }
   .buttonGreen{
-    background-color: green;
+    background: green;
   }
   .buttonYellow{
-    background-color: yellow;
+    background: yellow;
   }
   .buttonRed{
-    background-color: red;
+    background: red;
   }
+
+
 </style>
 
 <body>
@@ -47,21 +45,34 @@
   </p>
   <br>
 
-  <button id="mcxGreenBtn" class="button buttonGreen"></button><br>
-  <button id="mcxYellowBtn" class="button buttonGray"></button><br>
-  <button id="mcxRedBtn" class="button buttonGray"></button>
+  <div id="mcxCircleGreen" class="circle circleGray"></div><br>
+  <div id="mcxCircleYelow" class="circle circleGray"></div><br>
+  <div id="mcxCircleRed" class="circle circleGray"></div>
 
   <script>
-    const buttonGreen = document.getElementById("mcxGreenBtn");
-    const buttonyellow = document.getElementById("mcxYellowBtn");
-    const buttonRed = document.getElementById("mcxRedBtn");
+    const greenCircle = document.getElementById("mcxCircleGreen");
+    const yellowCircle = document.getElementById("mcxCircleYelow");
+    const redCircle = document.getElementById("mcxCircleRed");
 
-    
+    function myClick(btnNum, state) {
+      switch (btnNum){
+        case 1: 
+          greenCircle.innerHTML = 'GREEN';
+          break;
+        case 2: 
+          yellowCircle.innerHTML = 'YELLOW';
+          break;
+        case 3: 
+          redCircle.innerHTML = 'RED';
+          break;
+      }
+      
+    }
 
-
-    buttonGreen.onclick = function() { 
-
-    };
+////     greenCircle.onclick = function() { myClick(1) };
+    greenCircle.addEventListener('click', function() { myClick(1) });
+    yellowCircle.addEventListener('click', function() { myClick(2) });
+    redCircle.addEventListener('click', function() { myClick(3) });
 
   </script>
 </body>
