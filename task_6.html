@@ -8,8 +8,8 @@
   <h2>Inheritance</h2>
   <p>
     <b><span style="font-size: 20px;">Task: </span></b> 
-    <i>Declare the “A” class with the “value” property set to 1. Create the “A” class descendant (class “B”).<br>
-      Create “A” and “B” instances. Then increment the “value” option of the “B” instance and display “A.value” and “B.value” in the browser console.
+    <i>Declare the тАЬAтАЭ class with the тАЬvalueтАЭ property set to 1. Create the тАЬAтАЭ class descendant (class тАЬBтАЭ).<br>
+      Create тАЬAтАЭ and тАЬBтАЭ instances. Then increment the тАЬvalueтАЭ option of the тАЬBтАЭ instance and display тАЬA.valueтАЭ and тАЬB.valueтАЭ in the browser console.
       <br>
       Implement this scenario using:
       <ul style="list-style-type: lower-latin;">
@@ -32,7 +32,8 @@
       A.call(this); 
     }
 
-    B.prototype = Object.create(A.prototype, { constructor: B });
+    B.prototype = Object.create(A.prototype);
+    B.prototype.constructor = B;	
 
     const objA = new A();
     const objB = new B();  
