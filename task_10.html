@@ -12,17 +12,15 @@
   .circleGray{
     background: gray;
   }
-  .buttonGreen{
+  .circleGreen{
     background: green;
   }
-  .buttonYellow{
+  .circleYellow{
     background: yellow;
   }
-  .buttonRed{
+  .circleRed{
     background: red;
   }
-
-
 </style>
 
 <body>
@@ -48,32 +46,49 @@
   <div id="mcxCircleGreen" class="circle circleGray"></div><br>
   <div id="mcxCircleYelow" class="circle circleGray"></div><br>
   <div id="mcxCircleRed" class="circle circleGray"></div>
+  <br><br>
+  <button id="mcxBtn">Click to change the light</button>
 
   <script>
     const greenCircle = document.getElementById("mcxCircleGreen");
     const yellowCircle = document.getElementById("mcxCircleYelow");
     const redCircle = document.getElementById("mcxCircleRed");
 
-    function myClick(btnNum, state) {
-      switch (btnNum){
-        case 1: 
-          greenCircle.innerHTML = 'GREEN';
+    const btn = document.getElementById("mcxBtn");
+
+    function trafficLight() { 
+      this.index = -1;
+      this.lightIndex = function() { return this.index % 3};
+
+      this.activeLight = function() {
+        switch (this.lightIndex()) {
+          case 0: 
+            greenCircle.classList.value = "circle circleGreen";
+            yellowCircle.classList.value = "circle circleGray";
+            redCircle.classList.value = "circle circleGray";
           break;
-        case 2: 
-          yellowCircle.innerHTML = 'YELLOW';
+          case 1: //
+            greenCircle.classList.value = "circle circleGray";
+            yellowCircle.classList.value = "circle circleYellow";
+            redCircle.classList.value = "circle circleGray";
           break;
-        case 3: 
-          redCircle.innerHTML = 'RED';
-          break;
+          case 2:
+            greenCircle.classList.value = "circle circleGray";
+            yellowCircle.classList.value = "circle circleGray";
+            redCircle.classList.value = "circle circleRed"; 
+          break;                
+        }
       }
-      
-    }
+    }  
 
-////     greenCircle.onclick = function() { myClick(1) };
-    greenCircle.addEventListener('click', function() { myClick(1) });
-    yellowCircle.addEventListener('click', function() { myClick(2) });
-    redCircle.addEventListener('click', function() { myClick(3) });
+    const myTrafficLight = new trafficLight();
+    myTrafficLight.index = 0;
+    myTrafficLight.activeLight();
 
+    btn.onclick = function() {
+      myTrafficLight.index++;
+      myTrafficLight.activeLight();
+    };
   </script>
 </body>
 </html>
