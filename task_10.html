@@ -48,6 +48,8 @@
   <div id="mcxCircleRed" class="circle circleGray"></div>
   <br><br>
   <button id="mcxBtn">Click to change the light</button>
+  <br><br>
+  <button id="mcxBtnTimer">Click to change the light by timer</button>
 
   <script>
     const greenCircle = document.getElementById("mcxCircleGreen");
@@ -55,39 +57,43 @@
     const redCircle = document.getElementById("mcxCircleRed");
 
     const btn = document.getElementById("mcxBtn");
+    const btnTimer = document.getElementById("mcxBtnTimer");
 
-    function trafficLight() { 
+    function TrafficLight() { 
       this.index = -1;
-      this.lightIndex = function() { return this.index % 3};
+    }
 
-      this.activeLight = function() {
-        switch (this.lightIndex()) {
-          case 0: 
-            greenCircle.classList.value = "circle circleGreen";
-            yellowCircle.classList.value = "circle circleGray";
-            redCircle.classList.value = "circle circleGray";
-          break;
-          case 1: //
-            greenCircle.classList.value = "circle circleGray";
-            yellowCircle.classList.value = "circle circleYellow";
-            redCircle.classList.value = "circle circleGray";
-          break;
-          case 2:
-            greenCircle.classList.value = "circle circleGray";
-            yellowCircle.classList.value = "circle circleGray";
-            redCircle.classList.value = "circle circleRed"; 
-          break;                
-        }
+    TrafficLight.prototype.lightIndex = function() { return this.index % 3};
+    TrafficLight.prototype.activeLight = function() {
+      switch (this.lightIndex()) {
+        case 0: 
+          greenCircle.classList.replace("circleGray", "circleGreen");
+          yellowCircle.classList.replace("circleYellow", "circleGray");
+          redCircle.classList.replace("circleRed", "circleGray");
+        break;
+        case 1: 
+          greenCircle.classList.replace("circleGreen", "circleGray");
+          yellowCircle.classList.replace("circleGray", "circleYellow");
+          redCircle.classList.replace("circleRed", "circleGray");
+        break;
+        case 2:
+          greenCircle.classList.replace("circleGreen", "circleGray");
+          yellowCircle.classList.replace("circleYellow", "circleGray");
+          redCircle.classList.replace("circleGray", "circleRed");
+        break;                
       }
     }  
+    TrafficLight.prototype.changeLight = function() {  
+      this.index += 1;
+      this.activeLight();
+    }  
 
-    const myTrafficLight = new trafficLight();
-    myTrafficLight.index = 0;
+    const myTrafficLight = new TrafficLight();
+    myTrafficLight.index++;
     myTrafficLight.activeLight();
 
     btn.onclick = function() {
-      myTrafficLight.index++;
-      myTrafficLight.activeLight();
+      myTrafficLight.changeLight();
     };
   </script>
 </body>
