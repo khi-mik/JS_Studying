@@ -92,8 +92,25 @@
     myTrafficLight.index++;
     myTrafficLight.activeLight();
 
+    // manual switch
     btn.onclick = function() {
       myTrafficLight.changeLight();
+    };
+
+    let timerId = 0;
+    let flag = false;
+
+    // auto switch  
+    btnTimer.onclick = function() {
+      flag = !flag;
+      if (flag) {  
+        timerId = setInterval(
+        () => myTrafficLight.changeLight(), 1000
+        );
+      }
+      else
+        clearTimeout(timerId);
+
     };
   </script>
 </body>
