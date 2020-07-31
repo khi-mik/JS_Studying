@@ -63,77 +63,56 @@
     const btnTimer2 = document.getElementById("mcxBtnTimer2");
 
     function TrafficLight(container) {
-      this._circle1 = document.createElement("div");
-      this._circle1.classList.add("circle","circle-green");
-      this._circle2 = document.createElement("div");
-      this._circle2.classList.add("circle");
-      this._circle3 = document.createElement("div");
-      this._circle3.classList.add("circle");
-
-      container.appendChild(this._circle1);
-      container.appendChild(this._circle2);
-      container.appendChild(this._circle3);
+      this._styles = ["circle-green", "circle-yellow", "circle-red"];  
+      this._circle = [];
+      for (let i = 0; i < this._styles.length; ++i)
+      {
+        const circle = document.createElement("div"); 
+        circle.classList.add("circle");
+        this._circle.push(circle);
+        container.appendChild(circle);
+      }
       this._index = 0;
+      this._activeLight();
     }
 
     TrafficLight.prototype._activeLight = function() {
-      switch (this._index) {
-        case 0: 
-          this._circle3.classList.remove("circle-red");
-          this._circle1.classList.add("circle-green");
-        break;
-        case 1: 
-          this._circle1.classList.remove("circle-green");
-          this._circle2.classList.add("circle-yellow");
-        break;
-        case 2:
-          this._circle2.classList.remove("circle-yellow");
-          this._circle3.classList.add("circle-red");
-        break;                
-      }
-    }  
-    TrafficLight.prototype.changeLight = function() {  
-      this._index = (this._index + 1) % 3
+      this._circle[this._index].classList.toggle(this._styles[this._index]);
+    } 
+
+    TrafficLight.prototype.changeLight = function() { 
+      this._activeLight(); 
+      this._index = (this._index + 1) % 3;
       this._activeLight();
     }  
 
     const myTrafficLight = new TrafficLight(trafficLight1);
 
-
     // Classes
     class ClassTrafficLight {
       constructor (container) {
-        this._circle1 = document.createElement("div");
-        this._circle1.classList.add("circle","circle-green");
-        this._circle2 = document.createElement("div");
-        this._circle2.classList.add("circle");
-        this._circle3 = document.createElement("div");
-        this._circle3.classList.add("circle");
-
-        container.appendChild(this._circle1);
-        container.appendChild(this._circle2);
-        container.appendChild(this._circle3);
+        this._styles = ["circle-green", "circle-yellow", "circle-red"];  
+        this._circle = [];
+        for (let i = 0; i < this._styles.length; ++i)
+        {
+          const circle = document.createElement("div"); 
+          circle.classList.add("circle");
+          this._circle.push(circle);
+          container.appendChild(circle);
+        }
+        this._index = 0;
+        this.activeLight();
       }
-
-      lightIndex = 0;
+    
+      activeLight() {
+        this._circle[this._index].classList.toggle(this._styles[this._index]);
+      } 
 
       changeLight(){  
-        this.lightIndex = (this.lightIndex + 1) % 3;
-        switch (this.lightIndex) {
-          case 0: 
-            this._circle3.classList.remove("circle-red");
-            this._circle1.classList.add("circle-green");
-          break;
-          case 1: 
-            this._circle1.classList.remove("circle-green");
-            this._circle2.classList.add("circle-yellow");
-          break;
-          case 2:
-            this._circle2.classList.remove("circle-yellow");
-            this._circle3.classList.add("circle-red");
-          break;                  
+        this.activeLight();
+        this._index = (this._index + 1) % 3;
+        this.activeLight();
       }
-    }
   }  
 
     const trafficLight2 = document.getElementById("mcxTrafficLight2");
