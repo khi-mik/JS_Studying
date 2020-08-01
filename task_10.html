@@ -64,12 +64,12 @@
 
     function TrafficLight(container) {
       this._styles = ["circle-green", "circle-yellow", "circle-red"];  
-      this._circle = [];
+      this._circles = [];
       for (let i = 0; i < this._styles.length; ++i)
       {
         const circle = document.createElement("div"); 
         circle.classList.add("circle");
-        this._circle.push(circle);
+        this._circles.push(circle);
         container.appendChild(circle);
       }
       this._index = 0;
@@ -77,12 +77,12 @@
     }
 
     TrafficLight.prototype._activeLight = function() {
-      this._circle[this._index].classList.toggle(this._styles[this._index]);
+      this._circles[this._index].classList.toggle(this._styles[this._index]);
     } 
 
     TrafficLight.prototype.changeLight = function() { 
       this._activeLight(); 
-      this._index = (this._index + 1) % 3;
+      this._index = (this._index + 1) % this._styles.length;
       this._activeLight();
     }  
 
@@ -90,28 +90,29 @@
 
     // Classes
     class ClassTrafficLight {
+      #index;
       constructor (container) {
         this._styles = ["circle-green", "circle-yellow", "circle-red"];  
-        this._circle = [];
+        this._circles = [];
         for (let i = 0; i < this._styles.length; ++i)
         {
           const circle = document.createElement("div"); 
           circle.classList.add("circle");
-          this._circle.push(circle);
+          this._circles.push(circle);
           container.appendChild(circle);
         }
-        this._index = 0;
-        this.activeLight();
+        this.#index = 0;
+        this._activeLight();
       }
     
-      activeLight() {
-        this._circle[this._index].classList.toggle(this._styles[this._index]);
+      _activeLight() {
+        this._circles[this.#index].classList.toggle(this._styles[this.#index]);
       } 
 
       changeLight(){  
-        this.activeLight();
-        this._index = (this._index + 1) % 3;
-        this.activeLight();
+        this._activeLight();
+        this.#index = (this.#index + 1) % this._styles.length;
+        this._activeLight();
       }
   }  
 
