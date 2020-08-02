@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript: Course for DXStudents</title>
+</head>
+<style>
+  .circle{
+    border-radius: 100%;
+    width: 100px;
+    height: 100px;
+    background-color: gray;
+  }
+  .circle-green{
+    background-color: green;
+  }
+  .circle-yellow{
+    background-color: yellow;
+  }
+  .circle-red{
+    background-color: red;
+  } 
+</style>
+
+<body>
+  <h2>JS Traffic Light</h2>
+  <p>
+    <b><span style="font-size: 20px;">Task: </span></b> 
+    <br>Create a simple traffic light component using pure JavaScript. The application should contain:
+    <ul style="list-style-type: decimal;">
+      <li>A simple traffic light with 3 circles.
+        <br>Circles and the traffic light container should be rendered in using JS <b>without</b> using <b>canvas</b> or <b>image</b>  
+        <br>Use CSS classes to customize traffic light appearance
+      </li>
+      <li>The traffic light should be two modes:
+        <br>Manual mode - lights can be switched on a button click  
+        <br>Automatic mode - lights can be switches automatically
+      </li>  
+      <li>The task should be implemented in two ways - using <a href="https://www.w3schools.com/js/js_object_constructors.asp">JavaScript functions</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes">ES6 classes</a>. The resulting archive should contain both implementations.
+      </li>
+    </ul>  
+  </p>
+  <br>
+
+  <div id="mcxTrafficLight1"></div><br>
+  <br><br>
+  <button id="mcxBtn">Change the light</button>
+  <br><br>
+  <button id="mcxBtnTimer">Tubr ON / OFF changing the light by timer</button>
+
+  <br><br><br>
+  <div id="mcxTrafficLight2"></div><br>
+  <br><br>
+  <button id="mcxBtn2">Change the light</button>
+  <br><br>
+  <button id="mcxBtnTimer2">Tubr ON / OFF changing the light by timer</button>
+
+  <script>
+    const trafficLight1 = document.getElementById("mcxTrafficLight1");
+
+    const btn = document.getElementById("mcxBtn");
+    const btnTimer = document.getElementById("mcxBtnTimer");
+    const btn2 = document.getElementById("mcxBtn2");
+    const btnTimer2 = document.getElementById("mcxBtnTimer2");
+
+    function TrafficLight(container) {
+      this._styles = ["circle-green", "circle-yellow", "circle-red"];  
+      this._circles = [];
+      for (let i = 0; i < this._styles.length; ++i)
+      {
+        const circle = document.createElement("div"); 
+        circle.classList.add("circle");
+        this._circles.push(circle);
+        container.appendChild(circle);
+      }
+      this._index = 0;
+      this._activeLight();
+    }
+
+    TrafficLight.prototype._activeLight = function() {
+      this._circles[this._index].classList.toggle(this._styles[this._index]);
+    } 
+
+    TrafficLight.prototype.changeLight = function() { 
+      this._activeLight(); 
+      this._index = (this._index + 1) % this._styles.length;
+      this._activeLight();
+    }  
+
+    const myTrafficLight = new TrafficLight(trafficLight1);
+
+    // Classes
+    class ClassTrafficLight {
+      #index;
+      constructor (container) {
+        this._styles = ["circle-green", "circle-yellow", "circle-red"];  
+        this._circles = [];
+        for (let i = 0; i < this._styles.length; ++i)
+        {
+          const circle = document.createElement("div"); 
+          circle.classList.add("circle");
+          this._circles.push(circle);
+          container.appendChild(circle);
+        }
+        this.#index = 0;
+        this._activeLight();
+      }
+    
+      _activeLight() {
+        this._circles[this.#index].classList.toggle(this._styles[this.#index]);
+      } 
+
+      changeLight(){  
+        this._activeLight();
+        this.#index = (this.#index + 1) % this._styles.length;
+        this._activeLight();
+      }
+  }  
+
+    const trafficLight2 = document.getElementById("mcxTrafficLight2");
+    let objTrafficLight = new ClassTrafficLight(trafficLight2);
+    let timerId = 0;
+
+    // manual switch
+    btn.onclick = function() {
+      clearTimeout(timerId);
+      timerId = 0;
+      myTrafficLight.changeLight();
+    };
+
+    // auto switch  
+    btnTimer.onclick = function() {
+      if (timerId == 0) {  
+        timerId = setInterval(
+        () => myTrafficLight.changeLight(), 1000
+        );
+      }
+      else {
+        clearTimeout(timerId);
+        timerId = 0;
+      }  
+    };
+
+    let timerId2 = 0;
+
+    // manual switch
+    btn2.onclick = function() {
+      clearTimeout(timerId2);
+      timerId2 = 0;
+      objTrafficLight.changeLight();
+      
+    };
+
+    // auto switch  
+    btnTimer2.onclick = function() {
+      if (timerId2 == 0) {  
+        timerId2 = setInterval(
+        () => objTrafficLight.changeLight(), 500
+        );
+      }
+      else {
+        clearTimeout(timerId2);
+        timerId2 = 0;
+      }  
+    };    
+  </script>
+</body>
+</html>
