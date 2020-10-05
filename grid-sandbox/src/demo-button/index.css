@@ -1,0 +1,14 @@
+.button-root {
+    display: inline-block;
+    border: 1px solid black;
+    padding: 4px;
+}
+
+.button-label {
+
+}
+
+.button-icon {
+    height: 16px;
+    margin-left: 4px;
+}
